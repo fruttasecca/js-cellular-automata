@@ -2,10 +2,165 @@
 <html>
 	<head>
 		<title>js automata</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	</head>
 	<body>
-		<h2>rules</h2>
-		<canvas id="canvas"></canvas>
+            
+            <!-- every rule is a div with 4 squares -->
+            <div class="container-fluid">
+                <h2>rules</h2>
+                <div class="row">
+                    <div class="col-md-2" style="display: inline-block;">
+                        <div class="row">
+                                <div class="col-md-6">
+                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left"></div>
+                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left"></div>
+                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left">
+                                    </div>
+                                 </div>
+                        </div>
+                        <div class="row">
+                                <div class="col-md-6">
+                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left;visibility:hidden"></div>
+                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left;"></div>
+                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left;visibility:hidden">
+                                    </div>
+                                 </div>
+                        </div>
+                    </div> 
+                    <div class="col-md-2" style="display: inline-block;">
+                        <div class="row">
+                                <div class="col-md-6">
+                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left"></div>
+                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left"></div>
+                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left">
+                                    </div>
+                                 </div>
+                        </div>
+                        <div class="row">
+                                <div class="col-md-6">
+                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left;visibility:hidden"></div>
+                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left;"></div>
+                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left;visibility:hidden">
+                                    </div>
+                                 </div>
+                        </div>
+                    </div> 
+                    <div class="col-md-2" style="display: inline-block;">
+                        <div class="row">
+                                <div class="col-md-6">
+                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left"></div>
+                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left"></div>
+                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left">
+                                    </div>
+                                 </div>
+                        </div>
+                        <div class="row">
+                                <div class="col-md-6">
+                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left;visibility:hidden"></div>
+                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left;"></div>
+                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left;visibility:hidden">
+                                    </div>
+                                 </div>
+                        </div>
+                    </div>   
+                    <div class="col-md-2" style="display: inline-block;">
+                        <div class="row">
+                                <div class="col-md-6">
+                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left"></div>
+                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left"></div>
+                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left">
+                                    </div>
+                                 </div>
+                        </div>
+                        <div class="row">
+                                <div class="col-md-6">
+                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left;visibility:hidden"></div>
+                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left;"></div>
+                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left;visibility:hidden">
+                                    </div>
+                                 </div>
+                        </div>
+                    </div>   
+                    <div class="col-md-2" style="display: inline-block;">
+                        <div class="row">
+                                <div class="col-md-6">
+                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left"></div>
+                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left"></div>
+                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left">
+                                    </div>
+                                 </div>
+                        </div>
+                        <div class="row">
+                                <div class="col-md-6">
+                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left;visibility:hidden"></div>
+                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left;"></div>
+                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left;visibility:hidden">
+                                    </div>
+                                 </div>
+                        </div>
+                    </div>   
+                    <div class="col-md-2" style="display: inline-block;">
+                        <div class="row">
+                                <div class="col-md-6">
+                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left"></div>
+                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left"></div>
+                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left">
+                                    </div>
+                                 </div>
+                        </div>
+                        <div class="row">
+                                <div class="col-md-6">
+                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left;visibility:hidden"></div>
+                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left;"></div>
+                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left;visibility:hidden">
+                                    </div>
+                                 </div>
+                        </div>
+                    </div>   
+                    <div class="col-md-2" style="display: inline-block;">
+                        <div class="row">
+                                <div class="col-md-6">
+                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left"></div>
+                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left"></div>
+                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left">
+                                    </div>
+                                 </div>
+                        </div>
+                        <div class="row">
+                                <div class="col-md-6">
+                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left;visibility:hidden"></div>
+                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left;"></div>
+                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left;visibility:hidden">
+                                    </div>
+                                 </div>
+                        </div>
+                    </div>   
+                    <div class="col-md-2" style="display: inline-block;">
+                        <div class="row">
+                                <div class="col-md-6">
+                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left"></div>
+                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left"></div>
+                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left">
+                                    </div>
+                                 </div>
+                        </div>
+                        <div class="row">
+                                <div class="col-md-6">
+                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left;visibility:hidden"></div>
+                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left;"></div>
+                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left;visibility:hidden">
+                                    </div>
+                                 </div>
+                        </div>
+                    </div>   
+                    
+                </div>
+            </div> 
+        <div class="container">    
+	       	<canvas id="canvas"></canvas>
+        </div>
 		<script src="automata.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>    
 	</body>
 </html>
