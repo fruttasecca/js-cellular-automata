@@ -3,6 +3,7 @@
 	<head>
 		<title>js automata</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="automata.css">
 	</head>
 	<body>
             
@@ -12,144 +13,144 @@
                 <div class="row">
                     <div class="col-md-2" style="display: inline-block;">
                         <div class="row">
-                                <div class="col-md-6">
-                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left"></div>
-                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left"></div>
-                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left">
+                                <div class="col-md-12">
+                                    <div class="ZeroSquare"></div>
+                                    <div class="ZeroSquare"></div>
+                                    <div class="ZeroSquare">
                                     </div>
                                  </div>
                         </div>
                         <div class="row">
-                                <div class="col-md-6">
-                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left;visibility:hidden"></div>
-                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left;"></div>
-                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left;visibility:hidden">
-                                    </div>
-                                 </div>
-                        </div>
-                    </div> 
-                    <div class="col-md-2" style="display: inline-block;">
-                        <div class="row">
-                                <div class="col-md-6">
-                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left"></div>
-                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left"></div>
-                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left">
-                                    </div>
-                                 </div>
-                        </div>
-                        <div class="row">
-                                <div class="col-md-6">
-                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left;visibility:hidden"></div>
-                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left;"></div>
-                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left;visibility:hidden">
+                                <div class="col-md-12">
+                                    <div class="InvSquare"></div>
+                                    <div id="0" class="ZeroSquare"></div>
+                                    <div class="InvSquare">
                                     </div>
                                  </div>
                         </div>
                     </div> 
                     <div class="col-md-2" style="display: inline-block;">
                         <div class="row">
-                                <div class="col-md-6">
-                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left"></div>
-                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left"></div>
-                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left">
+                                <div class="col-md-12">
+                                    <div class="ZeroSquare"></div>
+                                    <div class="ZeroSquare"></div>
+                                    <div class="OneSquare">
                                     </div>
                                  </div>
                         </div>
                         <div class="row">
-                                <div class="col-md-6">
-                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left;visibility:hidden"></div>
-                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left;"></div>
-                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left;visibility:hidden">
+                                <div class="col-md-12">
+                                    <div class="InvSquare"></div>
+                                    <div id="1" class="ZeroSquare"></div>
+                                    <div class="InvSquare">
+                                    </div>
+                                 </div>
+                        </div>
+                    </div> 
+                    <div class="col-md-2" style="display: inline-block;">
+                        <div class="row">
+                                <div class="col-md-12">
+                                    <div class="ZeroSquare"></div>
+                                    <div class="OneSquare"></div>
+                                    <div class="ZeroSquare">
+                                    </div>
+                                 </div>
+                        </div>
+                        <div class="row">
+                                <div class="col-md-12">
+                                    <div class="InvSquare"></div>
+                                    <div id="2" class="ZeroSquare"></div>
+                                    <div class="InvSquare">
                                     </div>
                                  </div>
                         </div>
                     </div>   
                     <div class="col-md-2" style="display: inline-block;">
                         <div class="row">
-                                <div class="col-md-6">
-                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left"></div>
-                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left"></div>
-                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left">
+                                <div class="col-md-12">
+                                    <div class="ZeroSquare"></div>
+                                    <div class="OneSquare"></div>
+                                    <div class="OneSquare">
                                     </div>
                                  </div>
                         </div>
                         <div class="row">
-                                <div class="col-md-6">
-                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left;visibility:hidden"></div>
-                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left;"></div>
-                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left;visibility:hidden">
-                                    </div>
-                                 </div>
-                        </div>
-                    </div>   
-                    <div class="col-md-2" style="display: inline-block;">
-                        <div class="row">
-                                <div class="col-md-6">
-                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left"></div>
-                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left"></div>
-                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left">
-                                    </div>
-                                 </div>
-                        </div>
-                        <div class="row">
-                                <div class="col-md-6">
-                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left;visibility:hidden"></div>
-                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left;"></div>
-                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left;visibility:hidden">
+                                <div class="col-md-12">
+                                    <div class="InvSquare"></div>
+                                    <div id="3" class="ZeroSquare"></div>
+                                    <div class="InvSquare">
                                     </div>
                                  </div>
                         </div>
                     </div>   
                     <div class="col-md-2" style="display: inline-block;">
                         <div class="row">
-                                <div class="col-md-6">
-                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left"></div>
-                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left"></div>
-                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left">
+                                <div class="col-md-12">
+                                    <div class="OneSquare"></div>
+                                    <div class="ZeroSquare"></div>
+                                    <div class="ZeroSquare">
                                     </div>
                                  </div>
                         </div>
                         <div class="row">
-                                <div class="col-md-6">
-                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left;visibility:hidden"></div>
-                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left;"></div>
-                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left;visibility:hidden">
-                                    </div>
-                                 </div>
-                        </div>
-                    </div>   
-                    <div class="col-md-2" style="display: inline-block;">
-                        <div class="row">
-                                <div class="col-md-6">
-                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left"></div>
-                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left"></div>
-                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left">
-                                    </div>
-                                 </div>
-                        </div>
-                        <div class="row">
-                                <div class="col-md-6">
-                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left;visibility:hidden"></div>
-                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left;"></div>
-                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left;visibility:hidden">
+                                <div class="col-md-12">
+                                    <div class="InvSquare"></div>
+                                    <div id="4" class="ZeroSquare"></div>
+                                    <div class="InvSquare">
                                     </div>
                                  </div>
                         </div>
                     </div>   
                     <div class="col-md-2" style="display: inline-block;">
                         <div class="row">
-                                <div class="col-md-6">
-                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left"></div>
-                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left"></div>
-                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left">
+                                <div class="col-md-12">
+                                    <div class="OneSquare"></div>
+                                    <div class="ZeroSquare"></div>
+                                    <div class="OneSquare">
                                     </div>
                                  </div>
                         </div>
                         <div class="row">
-                                <div class="col-md-6">
-                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left;visibility:hidden"></div>
-                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left;"></div>
-                                    <div style="width:20px;height:20px;border:1px solid #000; background-color:green;min-width:20px;float:left;visibility:hidden">
+                                <div class="col-md-12">
+                                    <div class="InvSquare"></div>
+                                    <div id="5" class="ZeroSquare"></div>
+                                    <div class="InvSquare">
+                                    </div>
+                                 </div>
+                        </div>
+                    </div>   
+                    <div class="col-md-2" style="display: inline-block;">
+                        <div class="row">
+                                <div class="col-md-12">
+                                    <div class="OneSquare"></div>
+                                    <div class="OneSquare"></div>
+                                    <div class="ZeroSquare">
+                                    </div>
+                                 </div>
+                        </div>
+                        <div class="row">
+                                <div class="col-md-12">
+                                    <div class="InvSquare"></div>
+                                    <div id="6" class="ZeroSquare"></div>
+                                    <div class="InvSquare">
+                                    </div>
+                                 </div>
+                        </div>
+                    </div>   
+                    <div class="col-md-2" style="display: inline-block;">
+                        <div class="row">
+                                <div class="col-md-12">
+                                    <div class="OneSquare"></div>
+                                    <div class="OneSquare"></div>
+                                    <div class="OneSquare">
+                                    </div>
+                                 </div>
+                        </div>
+                        <div class="row">
+                                <div class="col-md-12">
+                                    <div class="InvSquare"></div>
+                                    <div id="7" class="ZeroSquare"></div>
+                                    <div class="InvSquare">
                                     </div>
                                  </div>
                         </div>

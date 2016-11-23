@@ -124,7 +124,24 @@ function sizeCanvas()
 	ctx.canvas.height = window.innerHeight * 0.8;
 }
 
+function changeRule(n1,n2,n3)
+{
+    rules[n1][n2][n3] = !rules[n1][n2][n3];
+}
 
+function invertSquare()
+{  
+    if(document.getElementById(this.id).className == "ZeroSquare")
+        document.getElementById(this.id).className = "OneSquare";
+    else
+        document.getElementById(this.id).className = "ZeroSquare";
+    //get base 2 representation in string form
+    var bitForm = parseInt(this.id).toString(2);
+    //make if of length 3
+    while(bitForm.length < 3)
+        bitForm = '0'.concat(bitForm);
+    changeRule(bitForm[0],bitForm[1],bitForm[2]);
+}
 
 //code to be executed on page load
 sizeCanvas();
@@ -134,3 +151,13 @@ size = 2;
 randomRules();
 initCellsRandom(cellNumber);
 doNSteps(steps,size);
+
+document.getElementById("0").onclick = invertSquare;
+document.getElementById("1").onclick = invertSquare;
+document.getElementById("2").onclick = invertSquare;
+document.getElementById("3").onclick = invertSquare;
+document.getElementById("4").onclick = invertSquare;
+document.getElementById("5").onclick = invertSquare;
+document.getElementById("6").onclick = invertSquare;
+document.getElementById("7").onclick = invertSquare;
+
