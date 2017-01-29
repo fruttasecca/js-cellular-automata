@@ -9,7 +9,7 @@ var rules =
 ];
 
 //colors to be used to fll cells
-var colors = ["black","green"];
+var colors = ["green","black"];
 
 //contains the cells
 var cells;
@@ -84,17 +84,42 @@ function randomRules()
  * @param in int size Size in pixels of an edge of a square(cell).
  * @return Description of returned value.
  */
-function doNSteps(n,size)
+function doNSteps()
 {
-	sizeCanvas();
+	steps = 500;
+	size = 2;
 	drawStep(0,20);
-	for(var i =0; i < n; i++)
+	for(var i =0; i < steps; i++)
 	{
 		nextStep();
-		drawStep(i+1,size);
+		drawStep(i+1, size);
 	}
 }
 
+/**
+ * @brief Draws in the canvas evolving vertically (going downward) starting from random rules, this function is called on page load.
+ */
+function randomAndRun()
+{
+	randomRules();
+	//update the drawed rules in the html page based on the state of the rules matrix
+	readRules();
+	run();
+}
+
+/**
+ * @brief Draws in the canvas evolving vertically (going downward) in a manner based on the rules.
+ */
+function run()
+{
+	cellNumber = 1000;
+	//init first line of cells
+	initCellsRandom(cellNumber);
+	//get window size to decide canvas size
+	sizeCanvas();
+	//evolve the automata
+	doNSteps();
+}
 //view
 
 /**
@@ -124,11 +149,17 @@ function sizeCanvas()
 	ctx.canvas.height = window.innerHeight * 0.8;
 }
 
+/**
+ * @brief Inverts the rules based on the n1, n2, n3 arguments, wich are the coordinates in the matrix, each argument is either 1 or 0 based on the state of the left square, middle square and right square of the rule clicked.
+ */
 function changeRule(n1,n2,n3)
 {
-    rules[n1][n2][n3] = !rules[n1][n2][n3];
+    rules[n1][n2][n3] = rules[n1][n2][n3] ? 0 : 1;
 }
 
+/**
+ * @brief Inverts the color of the clicked square, the related rule gets updated.
+ */
 function invertSquare()
 {  
     if(document.getElementById(this.id).className == "ZeroSquare")
@@ -137,20 +168,33 @@ function invertSquare()
         document.getElementById(this.id).className = "ZeroSquare";
     //get base 2 representation in string form
     var bitForm = parseInt(this.id).toString(2);
-    //make if of length 3
+    //make it of length 3
     while(bitForm.length < 3)
         bitForm = '0'.concat(bitForm);
+	//change the rule related to the clicked square
     changeRule(bitForm[0],bitForm[1],bitForm[2]);
 }
 
-//code to be executed on page load
-sizeCanvas();
-cellNumber = 1000;
-steps = 500;
-size = 2;
-randomRules();
-initCellsRandom(cellNumber);
-doNSteps(steps,size);
+/**
+ * @brief Reads the rules matrix and graphically updates the page to reflect the rules on the drawed rules squares.
+ */
+function readRules()
+{
+	for(var i = 0; i < 8; i++)
+	{
+		//get base 2 representation in string form
+		var bitForm = i.toString(2);
+		//make it of length 3
+		while(bitForm.length < 3)
+			bitForm = '0'.concat(bitForm);
+		//change the rule related to the clicked square
+    	if(rules[bitForm[0]][bitForm[1]][bitForm[2]])
+			document.getElementById(i).className = "OneSquare";
+		else
+			document.getElementById(i).className = "ZeroSquare";
+	}
+}
+
 
 document.getElementById("0").onclick = invertSquare;
 document.getElementById("1").onclick = invertSquare;
@@ -160,4 +204,6 @@ document.getElementById("4").onclick = invertSquare;
 document.getElementById("5").onclick = invertSquare;
 document.getElementById("6").onclick = invertSquare;
 document.getElementById("7").onclick = invertSquare;
+document.getElementById("run").onclick = run;
+document.getElementById("random").onclick = randomAndRun;
 
