@@ -47,7 +47,7 @@ function initCells(n,status)
 function initCellsRandom(n)
 {
 	cells = new Array(n);
-	for(var i=0; i < cells.length; i++)
+	for(var i = 0; i < cells.length; i++)
 		cells[i] = Math.round(Math.random());
 }
 
@@ -62,7 +62,7 @@ function nextStep()
 	var tmp = new Array(cells.length);
 	tmp[0] = rules[cells[cells.length-1]][cells[0]][cells[1]];
 	tmp[tmp.length-1] = rules[cells[cells.length-2]][cells[cells.length-1]][cells[0]];
-	for(var i=1,n=cells.length-1; i < n ; i++)
+	for(var i = 1, n = cells.length-1; i < n ; i++)
 		tmp[i] = rules[cells[i-1]][cells[i]][cells[i+1]];
 	cells = tmp;
 }
@@ -92,7 +92,7 @@ function doNSteps()
 	for(var i =0; i < steps; i++)
 	{
 		nextStep();
-		drawStep(i+1, size);
+		drawStep(i, size);
 	}
 }
 
@@ -132,10 +132,10 @@ function drawStep(step,size)
 	//y for drawing, it's basically the "row" if the canvas
 	//was a table
 	var y = step * size;
-	for(var i=0;i<cells.length;i++)
+	for(var i = 0; i <  cells.length; i++)
 	{
 		ctx.fillStyle = colors[cells[i]];
-		ctx.fillRect(size*i,y,size,size);
+		ctx.fillRect(size * i, y, size, size);
 	}
 	ctx.stroke();
 }
