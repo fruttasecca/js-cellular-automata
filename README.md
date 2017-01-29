@@ -1,6 +1,6 @@
 #js cellular automata
 Something to play around with cellular automata wich i've written in js and some bootstrap to give the page a decent and zero effort layout.  
-Once the page is loaded a 2d cellular automata will be evolved downward, the starting cells (the first row) are initialized randomly and you can edit the rules or randomize them and then run the evolution again.  
+Once the page is loaded a 2d cellular automata will be evolved downward, the starting cells (the first row) are randomly initialized  and you can edit the rules or randomize them and then run the evolution again.  
 If you are familiar with formal languages this can be seen as some kind of context-sensitive language.  
 
 [Example of a picture you can generate.](example.png)  
