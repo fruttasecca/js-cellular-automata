@@ -1,19 +1,8 @@
-.ZeroSquare
+.square
 {
     width:20px;
     height:20px;
     border:1px solid #000; 
-    background-color:green;
-    min-width:20px;
-    float:left;
-}
-
-.OneSquare
-{
-    width:20px;
-    height:20px;
-    border:1px solid #000;
-    background-color:black;
     min-width:20px;
     float:left;
 }

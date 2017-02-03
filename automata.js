@@ -15,15 +15,13 @@ var colors = ["green","black"];
 var cells;
 
 //number of cells (columns, since its going to evolve vertically
-var cellNumber;
+var cellNumber = 1000;
 
 //number of steps to make (rows, each row is an evolution based on rules from the var rules)
-var steps;
+var steps = 500;
 
-//canvas to draw cells in
-var canvas = document.getElementById("canvas");
 //ctx of the canvas, it's the object actually used to draw stuff
-var ctx = canvas.getContext("2d");
+var ctx = document.getElementById("canvas").getContext("2d");
 
 
 ////////////////////control
@@ -87,7 +85,6 @@ function nextStep()
  */
 function doNSteps()
 {
-	steps = 500;
 	size = 2;
 	drawStep(0,20);
 	for(var i =0; i < steps; i++)
@@ -102,7 +99,6 @@ function doNSteps()
  */
 function run()
 {
-	cellNumber = 1000;
 	//init first line of cells
 	initCellsRandom(cellNumber);
 	//get window size to decide canvas size
@@ -129,6 +125,8 @@ function randomColorAndRun()
 {
 	colors[0] = getRandomColor();
 	colors[1] = getRandomColor();
+	readRules();//to update colors of squares controlling the rules
+	updateRulesSquaresColors();//to update colors of the upper squares of the rules (not the clickable ones)
 	run();
 }
 
@@ -143,6 +141,15 @@ function getRandomColor()
     for (var i = 0; i < 6; i++ ) 
         color += letters[Math.floor(Math.random() * letters.length)];
     return color;
+}
+
+/**
+ * @brief Inverts the rules based on the n1, n2, n3 arguments, wich are the coordinates in the matrix, each argument is either 1 or 0 based on the state of the left square, middle square and right square of the rule clicked.
+ * @return returns the new value
+ */
+function changeRule(n1,n2,n3)
+{
+    return rules[n1][n2][n3] = rules[n1][n2][n3] ? 0 : 1;
 }
 
 /**
@@ -161,15 +168,8 @@ function afterLoad()
 	document.getElementById("run").onclick = run;
 	document.getElementById("random").onclick = randomAndRun;
 	document.getElementById("randomColors").onclick = randomColorAndRun;
+	updateRulesSquaresColors();//to update colors of the upper squares of the rules (not the clickable ones)
 	randomAndRun();
-}
-
-/**
- * @brief Inverts the rules based on the n1, n2, n3 arguments, wich are the coordinates in the matrix, each argument is either 1 or 0 based on the state of the left square, middle square and right square of the rule clicked.
- */
-function changeRule(n1,n2,n3)
-{
-    rules[n1][n2][n3] = rules[n1][n2][n3] ? 0 : 1;
 }
 
 ////////////////////view
@@ -184,7 +184,7 @@ function sizeCanvas()
 }
 
 /**
- * @brief Reads the rules matrix and graphically updates the page to reflect the rules on the drawed rules squares.
+ * @brief Reads the rules matrix and graphically updates the page to reflect the changed colors.
  */
 function readRules()
 {
@@ -195,12 +195,22 @@ function readRules()
 		//make it of length 3
 		while(bitForm.length < 3)
 			bitForm = '0'.concat(bitForm);
-		//change the rule related to the clicked square
-    	if(rules[bitForm[0]][bitForm[1]][bitForm[2]])
-			document.getElementById(i).className = "OneSquare";
-		else
-			document.getElementById(i).className = "ZeroSquare";
+		//change the color of the square using the value of its rule 
+		document.getElementById(i).style.backgroundColor = colors[rules[bitForm[0]][bitForm[1]][bitForm[2]]];
 	}
+}
+
+/**
+ * @brief Updates the color of the upper squares of the rules, the ones that aren't clickable.
+ */
+function updateRulesSquaresColors()
+{
+	var zeroSquares = document.getElementsByName("zeroSquare");
+	var oneSquares = document.getElementsByName("oneSquare");
+	for(var i = 0; i < zeroSquares.length; i++)
+		zeroSquares[i].style.backgroundColor = colors[0];
+	for(var i = 0; i < oneSquares.length; i++)
+		oneSquares[i].style.backgroundColor = colors[1];
 }
 
 /**
@@ -208,17 +218,13 @@ function readRules()
  */
 function invertSquare()
 {  
-    if(document.getElementById(this.id).className == "ZeroSquare")
-        document.getElementById(this.id).className = "OneSquare";
-    else
-        document.getElementById(this.id).className = "ZeroSquare";
-    //get base 2 representation in string form
+	//get base 2 representation in string form
     var bitForm = parseInt(this.id).toString(2);
     //make it of length 3
     while(bitForm.length < 3)
         bitForm = '0'.concat(bitForm);
-	//change the rule related to the clicked square
-    changeRule(bitForm[0],bitForm[1],bitForm[2]);
+	//change the rule related to the clicked square and update the square to the color of the new updated rule
+    document.getElementById(this.id).style.backgroundColor = colors[changeRule(bitForm[0],bitForm[1],bitForm[2])];
 }
 
 /**
@@ -238,11 +244,3 @@ function drawStep(step,size)
 	}
 	ctx.stroke();
 }
-
-
-
-
-
-
-
-
