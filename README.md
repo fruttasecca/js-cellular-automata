@@ -5,6 +5,9 @@ Every rule is graphically showed as 3 squares above a single one, of the 3 squar
 The state of the bottom square is the state in wich the cell will be if that rule is applied.  
 If you are familiar with formal languages this can be seen as some kind of context-sensitive language.  
 
-[Example of a picture you can generate.](example.png)  
+[Example of a picture you can generate.](example1.png)  
+[Example of a picture you can generate.](example2.png)  
+[Example of a picture you can generate.](example3.png)  
+[Example of a picture you can generate.](example4.png)  
 
 The size of the image is proportional to the window of your browser when you run the automata.

@@ -123,6 +123,29 @@ function randomAndRun()
 }
 
 /**
+ * @brief Draws in the canvas evolving vertically (going downward) after randomizing the colors.
+ */
+function randomColorAndRun()
+{
+	colors[0] = getRandomColor();
+	colors[1] = getRandomColor();
+	run();
+}
+
+/**
+ * @brief Generate a random color.
+ * @return A string representing a random color (RGB).
+ */
+function getRandomColor() 
+{
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++ ) 
+        color += letters[Math.floor(Math.random() * letters.length)];
+    return color;
+}
+
+/**
  * @brief Stuff to be done on page load
  */
 function afterLoad()
@@ -137,6 +160,7 @@ function afterLoad()
 	document.getElementById("7").onclick = invertSquare;
 	document.getElementById("run").onclick = run;
 	document.getElementById("random").onclick = randomAndRun;
+	document.getElementById("randomColors").onclick = randomColorAndRun;
 	randomAndRun();
 }
 
