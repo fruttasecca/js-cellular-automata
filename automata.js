@@ -26,7 +26,7 @@ var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 
 
-//control
+////////////////////control
 
 /**
  * @brief Initializes the cells, every cell will have a status equal to the status param.
@@ -52,6 +52,18 @@ function initCellsRandom(n)
 }
 
 /**
+ * @brief Initializes the cellular automata rules randomly.
+ */
+function randomRules()
+{
+	/*looks like O(n^3) but its just 8 elements, n = 2, this was the lazy way to write it*/
+	for(var i=0;i<rules.length;i++)
+		for(var u=0;u<rules[i].length;u++)
+			for(var z=0;z<rules[i][u].length;z++)
+				rules[i][u][z] = Math.round(Math.random());
+}
+
+/**
  * @brief Some brief description.
  * @param [in|out] type parameter_name Parameter description.
  * @param [in|out] type parameter_name Parameter description.
@@ -65,17 +77,6 @@ function nextStep()
 	for(var i = 1, n = cells.length-1; i < n ; i++)
 		tmp[i] = rules[cells[i-1]][cells[i]][cells[i+1]];
 	cells = tmp;
-}
-
-/**
- * @brief Initializes the cellular automata rules randomly.
- */
-function randomRules()
-{
-	for(var i=0;i<rules.length;i++)
-		for(var u=0;u<rules[i].length;u++)
-			for(var z=0;z<rules[i][u].length;z++)
-				rules[i][u][z] = Math.round(Math.random());
 }
 
 /**
@@ -97,17 +98,6 @@ function doNSteps()
 }
 
 /**
- * @brief Draws in the canvas evolving vertically (going downward) starting from random rules, this function is called on page load.
- */
-function randomAndRun()
-{
-	randomRules();
-	//update the drawed rules in the html page based on the state of the rules matrix
-	readRules();
-	run();
-}
-
-/**
  * @brief Draws in the canvas evolving vertically (going downward) in a manner based on the rules.
  */
 function run()
@@ -120,33 +110,34 @@ function run()
 	//evolve the automata
 	doNSteps();
 }
-//view
 
 /**
- * @brief Draws the current cells as a step in the canvas.
- * @param in int step The number representing the step, i.e. if this is the fifth step, step is 5.
- * @param in int size Size in pixels of a side of a square(cell).
+ * @brief Draws in the canvas evolving vertically (going downward) starting from random rules.
  */
-function drawStep(step,size)
+function randomAndRun()
 {
-	//y for drawing, it's basically the "row" if the canvas
-	//was a table
-	var y = step * size;
-	for(var i = 0; i <  cells.length; i++)
-	{
-		ctx.fillStyle = colors[cells[i]];
-		ctx.fillRect(size * i, y, size, size);
-	}
-	ctx.stroke();
+	randomRules();
+	//update the drawed rules in the html page based on the state of the rules matrix
+	readRules();
+	run();
 }
 
 /**
- * @brief Resizes the canvas based on the window dimensions.
+ * @brief Stuff to be done on page load
  */
-function sizeCanvas()
+function afterLoad()
 {
-	ctx.canvas.width  = window.innerWidth * 0.8;
-	ctx.canvas.height = window.innerHeight * 0.8;
+	document.getElementById("0").onclick = invertSquare;
+	document.getElementById("1").onclick = invertSquare;
+	document.getElementById("2").onclick = invertSquare;
+	document.getElementById("3").onclick = invertSquare;
+	document.getElementById("4").onclick = invertSquare;
+	document.getElementById("5").onclick = invertSquare;
+	document.getElementById("6").onclick = invertSquare;
+	document.getElementById("7").onclick = invertSquare;
+	document.getElementById("run").onclick = run;
+	document.getElementById("random").onclick = randomAndRun;
+	randomAndRun();
 }
 
 /**
@@ -157,22 +148,15 @@ function changeRule(n1,n2,n3)
     rules[n1][n2][n3] = rules[n1][n2][n3] ? 0 : 1;
 }
 
+////////////////////view
+
 /**
- * @brief Inverts the color of the clicked square, the related rule gets updated.
+ * @brief Resizes the canvas based on the window dimensions.
  */
-function invertSquare()
-{  
-    if(document.getElementById(this.id).className == "ZeroSquare")
-        document.getElementById(this.id).className = "OneSquare";
-    else
-        document.getElementById(this.id).className = "ZeroSquare";
-    //get base 2 representation in string form
-    var bitForm = parseInt(this.id).toString(2);
-    //make it of length 3
-    while(bitForm.length < 3)
-        bitForm = '0'.concat(bitForm);
-	//change the rule related to the clicked square
-    changeRule(bitForm[0],bitForm[1],bitForm[2]);
+function sizeCanvas()
+{
+	ctx.canvas.width  = window.innerWidth * 0.8;
+	ctx.canvas.height = window.innerHeight * 0.8;
 }
 
 /**
@@ -195,15 +179,46 @@ function readRules()
 	}
 }
 
+/**
+ * @brief Inverts the color of the clicked square, the related rule gets updated.
+ */
+function invertSquare()
+{  
+    if(document.getElementById(this.id).className == "ZeroSquare")
+        document.getElementById(this.id).className = "OneSquare";
+    else
+        document.getElementById(this.id).className = "ZeroSquare";
+    //get base 2 representation in string form
+    var bitForm = parseInt(this.id).toString(2);
+    //make it of length 3
+    while(bitForm.length < 3)
+        bitForm = '0'.concat(bitForm);
+	//change the rule related to the clicked square
+    changeRule(bitForm[0],bitForm[1],bitForm[2]);
+}
 
-document.getElementById("0").onclick = invertSquare;
-document.getElementById("1").onclick = invertSquare;
-document.getElementById("2").onclick = invertSquare;
-document.getElementById("3").onclick = invertSquare;
-document.getElementById("4").onclick = invertSquare;
-document.getElementById("5").onclick = invertSquare;
-document.getElementById("6").onclick = invertSquare;
-document.getElementById("7").onclick = invertSquare;
-document.getElementById("run").onclick = run;
-document.getElementById("random").onclick = randomAndRun;
+/**
+ * @brief Draws the current cells as a step in the canvas.
+ * @param in int step The number representing the step, i.e. if this is the fifth step, step is 5.
+ * @param in int size Size in pixels of a side of a square(cell).
+ */
+function drawStep(step,size)
+{
+	//y for drawing, it's basically the "row" if the canvas
+	//was a table
+	var y = step * size;
+	for(var i = 0; i <  cells.length; i++)
+	{
+		ctx.fillStyle = colors[cells[i]];
+		ctx.fillRect(size * i, y, size, size);
+	}
+	ctx.stroke();
+}
+
+
+
+
+
+
+
 
