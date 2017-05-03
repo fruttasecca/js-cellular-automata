@@ -11,3 +11,6 @@ If you are familiar with formal languages this can be seen as some kind of conte
 [Example of a picture you can generate.](example4.png)  
 
 The size of the image is proportional to the window of your browser when you run the automata.
+
+https://fruttasecca.github.io/js-cellular-automata/
+[github io page](https://fruttasecca.github.io/js-cellular-automata)
